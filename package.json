@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "license": "Apache-2.0",
-  "author": "Takuya Matsuyama<hi@craftz.dog> (https://www.craftz.dog/)",
+  "author": "Dev Tran Hong Phuc",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -11,10 +11,10 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "damn": "yarn && cd ios && pod install && cd .. && yarn ios",
-    "build:ios":"detox build -c ios",
-    "test:ios":"detox test -c ios",
-    "build:android":"detox build -c android",
-    "test:android":"detox test -c android"
+    "build:ios": "detox build -c ios",
+    "test:ios": "detox test -c ios",
+    "build:android": "detox build -c android",
+    "test:android": "detox test -c android"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -29,6 +29,7 @@
     "date-fns": "^2.29.1",
     "detox": "^19.9.1",
     "expo-font": "^10.2.0",
+    "jest-circus": "^28.1.3",
     "jotai": "^1.7.0",
     "lorem-ipsum": "^2.0.4",
     "moment": "^2.29.4",
@@ -47,7 +48,8 @@
     "react-native-svg": "^12.4.3",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.2",
-    "shortid": "^2.2.16"
+    "shortid": "^2.2.16",
+    "ts-jest": "^28.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

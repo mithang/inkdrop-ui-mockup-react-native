@@ -6,7 +6,7 @@
     "ios": {
       "build": "xcodebuild -workspace ios/RNMail.xcworkspace -scheme RNMail -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.app",
-      "binaryPath": "ios/build//Debug-iphonesimulator/RNMail.app"
+      "binaryPath": "ios/build/build/Products/Debug-iphonesimulator/RNMail.app"
     },
     "android": {
       "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
@@ -15,6 +15,7 @@
       "testBinaryPath": "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"
     }
   },
+
   "devices": {
     "simulator": {
       "type": "ios.simulator",
@@ -40,3 +41,13 @@
     }
   }
 }
+
+// viết native modules (ios switf, object C)
+// native UI
+// kiến trúc : react native link ....( add Xcode ), 0.69 -> kiến trúc mới (" thay đổi birdge viết bằng c ++")
+// redux,thunk sagaa, mobx ( ... ) , redux-toolkit
+// Formilk, reduxForm
+//test: Jest ( test auto detox)
+// CI/CD: signcall CI/CD, textfilght
+// Flatfrom : nền tảng react native cli   --- expo ( 1 sản phẩm 1 kiến trúc mở rộng liên tục nhiều tính năng nên chọn cli), (để đơn giản tối ưu thì dùng expo) tùy vào nghiêp vụ ng ta đưa
+// Rẹject:

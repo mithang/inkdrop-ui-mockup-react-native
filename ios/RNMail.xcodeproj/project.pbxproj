@@ -14,6 +14,7 @@
 		7699B88040F8A987B510C191 /* libPods-RNMail-RNMailTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-RNMail-RNMailTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		ADC0EF22289BC2F1009B0BC2 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = ADC0EF21289BC2F1009B0BC2 /* Fonts */; };
+		BA03332D536D68F3D006F060 /* libPods-RNMail.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-RNMail.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA03332D536D68F3D006F060 /* libPods-RNMail.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
