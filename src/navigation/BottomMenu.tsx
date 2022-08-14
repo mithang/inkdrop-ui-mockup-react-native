@@ -19,6 +19,7 @@ import InputScreen from '@/screens/input/InputScreen'
 
 import HomeScreen from '../screens/home'
 import ChoiceScreen from '@/screens/choice'
+import { View } from 'react-native'
 
 export type HomeTabParams = {
   HomeScreen: undefined
@@ -36,18 +37,21 @@ export const BottomMenu = () => {
         component={HomeScreen}
         options={{
           tabBarLabel: 'Trang chủ',
-          headerShown: false
+          headerShown: false,
+          tabBarTestID: 'HomeScreen'
         }}
       />
+
       <Tab.Screen
         name={'DetailScreen'}
         component={DetailScreen}
         options={{
           tabBarLabel: 'Công việc',
-
-          headerShown: false
+          headerShown: false,
+          tabBarTestID: 'DetailScreen'
         }}
       />
+
       <Tab.Screen
         name="AccountScreen"
         component={AccountScreen}
@@ -55,7 +59,8 @@ export const BottomMenu = () => {
           tabBarLabel: 'Tài khoản',
 
           tabBarBadge: 3,
-          headerShown: false
+          headerShown: false,
+          tabBarTestID: 'AccountScreen'
         }}
       />
       <Tab.Screen
@@ -63,7 +68,8 @@ export const BottomMenu = () => {
         component={SupportScreen}
         options={{
           tabBarLabel: 'Hỗ trợ',
-          headerShown: false
+          headerShown: false,
+          tabBarTestID: 'SupportScreen'
         }}
       />
     </Tab.Navigator>

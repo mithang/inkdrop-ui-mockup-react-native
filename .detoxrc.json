@@ -6,7 +6,7 @@
     "ios": {
       "build": "xcodebuild -workspace ios/RNMail.xcworkspace -scheme RNMail -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.app",
-      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/RNMail.app"
+      "binaryPath": "ios/build/build/Products/Debug-iphonesimulator/RNMail.app"
     },
     "android": {
       "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
