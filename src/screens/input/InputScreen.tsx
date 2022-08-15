@@ -77,7 +77,7 @@ const InputScreen = () => {
                   name="radio-button-on"
                   width={20}
                   height={20}
-                  fill="#4774fcr"
+                  fill="#4774fc"
                 />
               </View>
               <Text>{item.nameChoice}</Text>
@@ -129,7 +129,7 @@ const InputScreen = () => {
               placeholder="Nhập Số nhà,tên đường..."
               onChangeText={setAddress}
               value={address}
-              testID='textAdress'
+              testID="text1"
             />
           </View>
 
@@ -155,6 +155,7 @@ const InputScreen = () => {
               placeholder="Tỉnh / Thành Phố"
               onChangeText={setCity}
               value={city}
+              testID="text2"
             />
             <View style={{ paddingTop: 10 }}></View>
             <Text
@@ -177,6 +178,7 @@ const InputScreen = () => {
               placeholder=" Quận / Huyện"
               onChangeText={setDistrict}
               value={district}
+              testID="text3"
             />
           </View>
         </View>
@@ -212,7 +214,9 @@ const InputScreen = () => {
             onPress={onPress}
             onPressIn={onPressIn}
           >
-            <Text style={{ color: 'white' }}>Chon vị trí này</Text>
+            <Text style={{ color: 'white' }} testID="PressInThis">
+              Chon vị trí này
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

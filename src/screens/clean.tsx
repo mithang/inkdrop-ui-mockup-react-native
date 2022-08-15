@@ -80,6 +80,7 @@ const CleanHouseScreen: React.FC = () => {
           setChoice(index)
           dispatch(addMutiIndex(choice))
         }}
+        testID={`duration${index}`}
       >
         <View style={[styles.viewBox, isActive ? styles.viewBoxChoice : {}]}>
           <View style={{ flexDirection: 'column', marginLeft: 10 }}>
@@ -144,7 +145,9 @@ const CleanHouseScreen: React.FC = () => {
                 </View>
                 <View style={{ paddingTop: 6 }}>
                   <TouchableOpacity onPress={handleScreen}>
-                    <Text style={styles.text2}>Thay Đổi</Text>
+                    <Text style={styles.text2} testID="Change">
+                      Thay Đổi
+                    </Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -206,6 +209,7 @@ const CleanHouseScreen: React.FC = () => {
                       )
                     }}
                     key={index}
+                    testID={`week${index}`}
                   >
                     {index === isSelected ? (
                       <View
@@ -283,7 +287,6 @@ const CleanHouseScreen: React.FC = () => {
                 paddingBottom: 70,
                 borderRadius: 5
               }}
-              
               placeholder="Bạn có yêu cầu gì thêm, hãy nhập ở đây nhé"
               onChangeText={setText}
               value={text}

@@ -2,7 +2,7 @@ import { Text } from '@/atoms'
 
 import * as React from 'react'
 import { memo } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Pressable, Alert } from 'react-native'
 
 //
 import Header from '../components/header/header'
@@ -21,6 +21,7 @@ const DetailScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <Header nameHeader="Danh sách công việc" />
+
       <View style={styles.body}>
         {infoSlice.InfoList.money === undefined ||
         infoSlice === null ||
@@ -29,161 +30,176 @@ const DetailScreen = () => {
             <Text style={styles.text}>Bạn hiện tại chưa có công việc nào!</Text>
           </View>
         ) : (
-          <View style={styles.viewBox}>
-            {/* firstViewBox */}
+          <Pressable
+            onPress={() => {
+              Alert.alert('hello')
+            }}
+            style={({ pressed }) => [
+              { backgroundColor: '#fff', opacity: pressed ? 0.2 : 1 }
+            ]}
+          >
+            <View style={styles.viewBox}>
+              {/* firstViewBox */}
 
-            <View
-              style={[
-                styles.firstViewBox,
-                {
-                  marginTop: 15,
-                  marginLeft: 15,
-                  marginRight: 15
-                }
-              ]}
-            >
-              <View style={styles.itemFirstViewBox}>
-                <View>
-                  <Text style={styles.text}>Dọn dẹp nhà</Text>
+              <View
+                style={[
+                  styles.firstViewBox,
+                  {
+                    marginTop: 15,
+                    marginLeft: 15,
+                    marginRight: 15
+                  }
+                ]}
+              >
+                <View style={styles.itemFirstViewBox}>
+                  <View>
+                    <Text style={styles.text}>Dọn dẹp nhà</Text>
+                  </View>
+                  <View style={{}}>
+                    <View style={{ paddingTop: 5 }}>
+                      <Text style={[styles.subText, {}]}>
+                        Đã đăng vài giây tới
+                      </Text>
+                    </View>
+                  </View>
                 </View>
-                <View style={{}}>
-                  <View style={{ paddingTop: 5 }}>
-                    <Text style={[styles.subText, {}]}>
-                      Đã đăng vài giây tới
+
+                <View style={styles.button}>
+                  <Text
+                    style={[
+                      styles.subText,
+                      { color: bTaskee, textAlign: 'center' }
+                    ]}
+                  >
+                    Mới đăng
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.lineBox} />
+
+              <View style={styles.flexItem}>
+                <View style={{ flexDirection: 'row' }}>
+                  <View style={styles.center}>
+                    <Icon
+                      name={'clipboard-outline'}
+                      fill={bTaskee}
+                      width={22}
+                      height={22}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.contentText}>
+                      {formatLetter(timeSlice?.TimeList?.date)},
+                      {timeSlice?.TimeList?.day}
+                    </Text>
+                  </View>
+                </View>
+                {/* Item 2 */}
+                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                  <View>
+                    <Icon
+                      name={'clock-outline'}
+                      fill={bTaskee}
+                      width={22}
+                      height={22}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.contentText}>
+                      {LIST_DATA3?.[mutiSlice.index]?.id !== -1 ? (
+                        <Text style={styles.contentText}>
+                          {LIST_DATA3?.[mutiSlice?.index]?.time} giờ
+                        </Text>
+                      ) : null}
+                      , bắt đầu từ 14:30 đến 17:30
+                    </Text>
+                  </View>
+                </View>
+                {/* Item 3 */}
+                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                  <View>
+                    <Icon
+                      name={'smiling-face-outline'}
+                      fill={bTaskee}
+                      width={22}
+                      height={22}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.contentText}>
+                      {currencyFormat(infoSlice?.InfoList?.money)}
+                    </Text>
+                  </View>
+                </View>
+                {/* Item 4 */}
+                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                  <View>
+                    <Icon
+                      name={'car-outline'}
+                      fill={bTaskee}
+                      width={22}
+                      height={22}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.contentText}>Chờ thanh toán</Text>
+                  </View>
+                </View>
+                {/* Item 5 */}
+                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                  <View>
+                    <Icon
+                      name={'pin-outline'}
+                      fill={bTaskee}
+                      width={22}
+                      height={22}
+                    />
+                  </View>
+                  <View style={{ paddingRight: 20 }}>
+                    <Text
+                      style={[styles.contentText, { width: 300 }]}
+                      numberOfLines={3}
+                    >
+                      Công ty TNHH bTaskee, Hẻm 284/25 Lý Thường Kiệt, phường
+                      14, Quận 10, Thành phố Hồ Chí Minh, Việt Nam
                     </Text>
                   </View>
                 </View>
               </View>
-
-              <View style={styles.button}>
-                <Text
-                  style={[
-                    styles.subText,
-                    { color: bTaskee, textAlign: 'center' }
-                  ]}
-                >
-                  Mới đăng
-                </Text>
-              </View>
-            </View>
-            <View style={styles.lineBox} />
-
-            <View style={styles.flexItem}>
-              <View style={{ flexDirection: 'row' }}>
-                <View style={styles.center}>
-                  <Icon
-                    name={'clipboard-outline'}
-                    fill={bTaskee}
-                    width={22}
-                    height={22}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.contentText}>
-                    {formatLetter(timeSlice?.TimeList?.date)},
-                    {timeSlice?.TimeList?.day}
-                  </Text>
-                </View>
-              </View>
-              {/* Item 2 */}
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                <View>
-                  <Icon
-                    name={'clock-outline'}
-                    fill={bTaskee}
-                    width={22}
-                    height={22}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.contentText}>
-                    {LIST_DATA3?.[mutiSlice.index]?.id !== -1 ? (
-                      <Text style={styles.contentText}>
-                        {LIST_DATA3?.[mutiSlice?.index]?.time} giờ
-                      </Text>
-                    ) : null}
-                    , bắt đầu từ 14:30 đến 17:30
-                  </Text>
-                </View>
-              </View>
-              {/* Item 3 */}
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                <View>
-                  <Icon
-                    name={'smiling-face-outline'}
-                    fill={bTaskee}
-                    width={22}
-                    height={22}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.contentText}>
-                    {currencyFormat(infoSlice?.InfoList?.money)}
-                  </Text>
-                </View>
-              </View>
-              {/* Item 4 */}
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                <View>
-                  <Icon
-                    name={'car-outline'}
-                    fill={bTaskee}
-                    width={22}
-                    height={22}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.contentText}>Chờ thanh toán</Text>
-                </View>
-              </View>
-              {/* Item 5 */}
-              <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                <View>
-                  <Icon
-                    name={'pin-outline'}
-                    fill={bTaskee}
-                    width={22}
-                    height={22}
-                  />
-                </View>
-                <View style={{ paddingRight: 20 }}>
-                  <Text
-                    style={[styles.contentText, { width: 300 }]}
-                    numberOfLines={3}
-                  >
-                    Công ty TNHH bTaskee, Hẻm 284/25 Lý Thường Kiệt, phường 14,
-                    Quận 10, Thành phố Hồ Chí Minh, Việt Nam
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View style={styles.lineBox} />
-            <View
-              style={[
-                styles.firstViewBox,
-                { marginTop: 20, marginLeft: 20, marginRight: 20 }
-              ]}
-            >
-              <View style={styles.button1}>
-                <Text style={[styles.subText, { color: 'red' }]}>Hủy Việc</Text>
-              </View>
-              <View style={[styles.button2, {}]}>
-                <Text style={[styles.subText, { color: 'green' }]}>
-                  Thanh Toán Lại
-                </Text>
-              </View>
-            </View>
-
-            <View
-              style={[styles.center, { paddingTop: 20, paddingBottom: 20 }]}
-            >
-              <Text
-                style={{ textAlign: 'center', fontSize: 14, color: '#98eba8' }}
+              <View style={styles.lineBox} />
+              <View
+                style={[
+                  styles.firstViewBox,
+                  { marginTop: 20, marginLeft: 20, marginRight: 20 }
+                ]}
               >
-                Các CTV bTaskee đều có ít nhất 1 mũi vaccine
-              </Text>
+                <View style={styles.button1}>
+                  <Text style={[styles.subText, { color: 'red' }]}>
+                    Hủy Việc
+                  </Text>
+                </View>
+                <View style={[styles.button2, {}]}>
+                  <Text style={[styles.subText, { color: 'green' }]}>
+                    Thanh Toán Lại
+                  </Text>
+                </View>
+              </View>
+
+              <View
+                style={[styles.center, { paddingTop: 20, paddingBottom: 20 }]}
+              >
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    fontSize: 14,
+                    color: '#98eba8'
+                  }}
+                >
+                  Các CTV bTaskee đều có ít nhất 1 mũi vaccine
+                </Text>
+              </View>
             </View>
-          </View>
+          </Pressable>
         )}
       </View>
     </View>
