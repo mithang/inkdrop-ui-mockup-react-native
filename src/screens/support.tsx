@@ -6,17 +6,37 @@ import {
   View,
   TouchableOpacity
 } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/header/header'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
+import moment from 'moment'
+import PickerTime from '@/components/pickerTime/pickerTime'
+import { addMoment } from '@/redux/moment'
 
 const SupportScreen = () => {
   const openUrl = () => {
     Linking.openURL('https://wwww.btaskee.com/')
   }
+  const momentSlice = useSelector((state: RootState) => state.momentSlice)
+  const current = moment.unix(momentSlice.timeData ?? 0)
+  const [date, setDate] = useState(moment())
+  const [hour, setHour] = useState(0)
+  const [min, setMin] = useState(0)
+  const dispatch = useDispatch()
+  const onChange = (event: any, selectedDate?: Date) => {
+    const currentDate = moment(selectedDate) || date
+    setDate(currentDate)
+    dispatch(addMoment(currentDate.unix()))
+  }
+
   return (
     <View style={styles.container}>
       <Header nameHeader="Hỗ trợ" />
       <View style={styles.body}>
+        <PickerTime date={date} onChange={onChange} />
+        <Text>{current.hour?.() + 2}</Text>
+        <Text>{current.minutes?.()}</Text>
         <Text style={styles.text}>Bạn cần hỗ trợ? Hãy liên hệ</Text>
         <View style={styles.item}>
           <View style={styles.item1}>

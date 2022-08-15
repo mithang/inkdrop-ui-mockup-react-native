@@ -1,8 +1,26 @@
-import { Linking, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
+import {
+  Linking,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Button,
+  Platform
+} from 'react-native'
+import React, { useState, useEffect } from 'react'
 
 import Header from '../components/header/header'
 import { bTaskee } from '@/themes/color'
+
+import DatePicker from 'react-native-date-picker'
+import DateTimePicker from '@react-native-community/datetimepicker'
+import { backgroundWhite } from '../themes/color'
+import { getWeekDays } from '../helpers/index'
+import RNDateTimePicker from '@react-native-community/datetimepicker'
+import moment from 'moment'
+import { useDispatch } from 'react-redux'
+import { addMoment } from '@/redux/moment'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const AccountScreen = () => {
   const _openAppStore = () => {
@@ -10,6 +28,7 @@ const AccountScreen = () => {
       'https://apps.apple.com/vn/app/btaskee-maids-and-cleaning/id1054302942'
     )
   }
+
   return (
     <View style={{ flex: 1 }}>
       <Header nameHeader="Tài khoản" />
