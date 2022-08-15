@@ -6,13 +6,23 @@
     "ios": {
       "build": "xcodebuild -workspace ios/RNMail.xcworkspace -scheme RNMail -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
       "type": "ios.app",
-      "binaryPath": "ios/build/build/Products/Debug-iphonesimulator/RNMail.app"
+      "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/RNMail.app"
     },
     "android": {
       "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
       "type": "android.apk",
       "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
       "testBinaryPath": "android/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk"
+    },
+    "driver.ios.release": {
+      "type": "ios.app",
+      "name": "driver",
+      "binaryPath": "path/to/driver.app"
+    },
+    "passenger.ios.release": {
+      "type": "ios.app",
+      "name": "passenger",
+      "binaryPath": "path/to/passenger.app"
     }
   },
 
@@ -31,6 +41,10 @@
     }
   },
   "configurations": {
+    "ios.release": {
+      "device": "simulator",
+      "apps": ["driver", "passenger"]
+    },
     "ios": {
       "device": "simulator",
       "app": "ios"
