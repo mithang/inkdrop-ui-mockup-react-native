@@ -21,6 +21,10 @@ pod 'RNFastImage', :path => '../node_modules/react-native-fast-image'
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
+  pod 'RNReactNativeHapticFeedback', :path => '../node_modules/react-native-haptic-feedback'
+
   target 'RNMailTests' do
     inherit! :complete
     # Pods for testing

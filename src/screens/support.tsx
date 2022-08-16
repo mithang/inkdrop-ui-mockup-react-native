@@ -13,6 +13,8 @@ import { RootState } from '../redux/store'
 import moment from 'moment'
 import PickerTime from '@/components/pickerTime/pickerTime'
 import { addMoment } from '@/redux/moment'
+import SelectorTime from '@/components/selectorTime/SelectorTime'
+import { gradientEnd } from '@/themes/color'
 
 const SupportScreen = () => {
   const openUrl = () => {
@@ -29,17 +31,19 @@ const SupportScreen = () => {
     setDate(currentDate)
     dispatch(addMoment(currentDate.unix()))
   }
+  const LIMITS: any = 60
 
   return (
     <View style={styles.container}>
       <Header nameHeader="Hỗ trợ" />
       <View style={styles.body}>
-        <PickerTime date={date} onChange={onChange} />
-        <Text>{current.hour?.() + 2}</Text>
+        {/* <PickerTime date={date} onChange={onChange} /> */}
+        <SelectorTime limit={LIMITS} defaultOffsetHour={4} />
+        {/* <Text>{current.hour?.() + 2}</Text>
         <Text>{current.minutes?.()}</Text>
         <Text style={styles.text}>Bạn cần hỗ trợ? Hãy liên hệ</Text>
-        <View style={styles.item}>
-          <View style={styles.item1}>
+        <View style={styles.item}> */}
+        {/* <View style={styles.item1}>
             <Image
               style={styles.stretch}
               source={require('../assets/icon/images.jpeg')}
@@ -58,15 +62,15 @@ const SupportScreen = () => {
             >
               Hotline: 1900.636.736
             </Text>
-          </View>
-          <View
+          </View> */}
+        {/* <View
             style={{
               borderWidth: 0.5,
               borderColor: 'grey'
             }}
-          ></View>
-          {/* //Item2\\ */}
-          <View style={styles.item1}>
+          ></View> */}
+        {/* //Item2\\ */}
+        {/* <View style={styles.item1}>
             <Image
               style={styles.stretch}
               source={require('../assets/icon/images.jpeg')}
@@ -85,16 +89,16 @@ const SupportScreen = () => {
             >
               Email: support@btaskee.com
             </Text>
-          </View>
-          <View
+          </View> */}
+        {/* <View
             style={{
               borderWidth: 0.5,
               borderColor: 'grey',
               marginRight: 20
             }}
-          ></View>
-          {/* //item3 */}
-          <View style={styles.item1}>
+          ></View> */}
+        {/* //item3 */}
+        {/* <View style={styles.item1}>
             <Image
               style={styles.stretch}
               source={require('../assets/icon/images.jpeg')}
@@ -115,15 +119,15 @@ const SupportScreen = () => {
                 Website: https://www.btaskee.com/
               </Text>
             </TouchableOpacity>
-          </View>
-          <View
+          </View> */}
+        {/* <View
             style={{
               borderWidth: 0.5,
               borderColor: 'grey',
               marginRight: 20
             }}
-          ></View>
-        </View>
+          ></View> */}
+        {/* </View> */}
       </View>
     </View>
   )
