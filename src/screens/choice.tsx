@@ -127,11 +127,8 @@ const ChoiceScreen: React.FC = () => {
                             {LIST_DATA3?.[mutiSlice?.index]?.time} giờ,
                             <Text> </Text>
                             <Text>
-                              bắt đâu từ <Text> </Text>
-                              {current
-                                .hour?.()
-                                .toString()
-                                .padStart(2, '0')} :{' '}
+                              bắt đâu từ{' '}
+                              {current.hour?.().toString().padStart(2, '0')} :{' '}
                             </Text>
                             <Text>{current.minutes?.()}</Text>
                           </Text>

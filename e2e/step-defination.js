@@ -1,4 +1,6 @@
 const moment = require('moment')
+const { device } = require('detox')
+const { describe } = require('jest-circus')
 require('isomorphic-fetch')
 const urlServer = 'http://localhost:3000/api/'
 const urlService = 'http://localhost:8080/api'
@@ -283,7 +285,23 @@ const clearTextInput = async id => {
 }
 
 // ========================== Expect Element ===================================
+const getTimeText = () => element(by.id('dateTimePicker'))
+async function userOpensPicker({ mode, display, interval, tzOffsetPreset }) {
+  await element(by.text(mode)).tap()
+  await element(by.text(display)).tap()
+  if (interval) {
+    await element(by.text(String(interval))).tap()
+  }
+  if (tzOffsetPreset) {
+    await element(by.id(tzOffsetPreset)).tap()
+  }
+  await element(by.id('dateTimePicker')).tap()
+}
 
+const getDateTimePickerControlIOS = () => element(by.type('dateTimePicker'))
+const isIOS = () => device.getPlatform() === 'ios'
+
+// ========================== Expect Element ===================================
 const waitForElement = async (value, seconds, type) => {
   if (type === 'text') {
     await waitFor(element(by.text(value)))
@@ -392,20 +410,20 @@ const typePromotionCode = async code => {
  */
 const selectTime24h = async (hour, hourDefault = 14) => {
   if (device.getPlatform() === 'ios') {
-    await waitForElement('dpTimePicker', 500)
-    await tapId('dpTimePicker')
+    await waitForElement('dateTimePicker', 500)
+    await tapId('dateTimePicker')
     await waitForElement('dateTimePicker', 500)
     const dp = element(by.id('dateTimePicker'))
     const hourTap = hour - hourDefault
     if (hourTap > 0) {
       // Tap the next time
       for (var i = 0; i < hourTap; i++) {
-        await dp.tapAtPoint({ x: 110, y: 135 })
+        await dp.tapAtPoint({ x: 220, y: 135 })
       }
     } else {
       // Tap the previous time
       for (var i = 0; i > hourTap; i--) {
-        await dp.tapAtPoint({ x: 110, y: 90 })
+        await dp.tapAtPoint({ x: 220, y: 90 })
       }
     }
   }
@@ -413,8 +431,8 @@ const selectTime24h = async (hour, hourDefault = 14) => {
 
 const selectTime = async (hour = 1, next = true, ampm) => {
   if (device.getPlatform() === 'ios') {
-    await waitForElement('dpTimePicker', 500)
-    await tapId('dpTimePicker')
+    await waitForElement('dateTimePicker', 500)
+    await tapId('dateTimePicker')
     await waitForElement('dateTimePicker', 500)
     const dp = element(by.id('dateTimePicker'))
     if (hour) {
@@ -783,5 +801,9 @@ module.exports = {
   forgotPasswordWithModal,
   chooseIsoCodeFromSetting,
   chooseAddressGrocery,
-  postTaskGroceryAssistant
+  postTaskGroceryAssistant,
+  getTimeText,
+  isIOS,
+  userOpensPicker,
+  getDateTimePickerControlIOS
 }

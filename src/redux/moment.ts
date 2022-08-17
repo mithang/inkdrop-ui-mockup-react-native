@@ -16,6 +16,7 @@ export const MomentSlice = createSlice({
   reducers: {
     addMoment: (state, action: PayloadAction<number>) => {
       state.timeData = action.payload
+      console.log('TCL:  state.timeData', state.timeData)
     }
   }
 })

@@ -12,12 +12,15 @@ import { black, bTaskee, grey } from '@/themes/color'
 import { Icon } from 'react-native-eva-icons'
 import { currencyFormat, formatLetter } from '@/helpers'
 import { LIST_DATA3 } from '@/utils/data'
+import moment from 'moment'
 
 const DetailScreen = () => {
   const infoSlice = useSelector((state: RootState) => state.infoSlice)
   const mutiSlice = useSelector((state: RootState) => state.mutiSlice)
   const choiceSlice = useSelector((state: RootState) => state.choiceSlice)
   const timeSlice = useSelector((state: RootState) => state.timeSlice)
+  const momentSlice = useSelector((state: RootState) => state.momentSlice)
+  const current = moment.unix(momentSlice.timeData ?? 0)
   return (
     <View style={{ flex: 1 }}>
       <Header nameHeader="Danh sách công việc" />
@@ -108,10 +111,23 @@ const DetailScreen = () => {
                     <Text style={styles.contentText}>
                       {LIST_DATA3?.[mutiSlice.index]?.id !== -1 ? (
                         <Text style={styles.contentText}>
-                          {LIST_DATA3?.[mutiSlice?.index]?.time} giờ
+                          {LIST_DATA3?.[mutiSlice?.index]?.time} giờ,
+                          <Text style={styles.contentText}> Bắt đầu từ </Text>
+                          <Text style={styles.contentText}>
+                            {current.hour?.().toString().padStart(2, '')} :
+                          </Text>
+                          <Text style={styles.contentText}>
+                            {current.minutes?.()}
+                            <Text style={styles.contentText}>
+                              {' '}
+                              cho đến{' '}
+                              {current.hour?.() +
+                                LIST_DATA3?.[mutiSlice?.index]?.time}{' '}
+                              {':'} {current.minutes?.()}
+                            </Text>
+                          </Text>
                         </Text>
                       ) : null}
-                      , bắt đầu từ 14:30 đến 17:30
                     </Text>
                   </View>
                 </View>

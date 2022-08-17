@@ -97,6 +97,7 @@ const CleanHouseScreen: React.FC = () => {
   }
   const onChange = (event: any, selectedDate?: Date) => {
     const currentDate = moment(selectedDate) || date
+    console.log('TCL: onChange -> currentDate', currentDate)
     setDate(currentDate)
     dispatch(addMoment(currentDate.unix()))
   }
