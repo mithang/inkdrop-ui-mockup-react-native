@@ -15,6 +15,7 @@ import { useNavigation } from '@react-navigation/native'
 import { bTaskee } from '@/themes/color'
 import { Icon } from 'react-native-eva-icons'
 import { currencyFormat, formatLetter } from '@/helpers'
+import moment from 'moment'
 const ChoiceScreen: React.FC = () => {
   const dispatch = useDispatch()
   const navigation = useNavigation()
@@ -25,6 +26,8 @@ const ChoiceScreen: React.FC = () => {
   console.log('TCL: ChoiceScreen:React.FC -> mutiSlice', mutiSlice)
   const choiceSlice = useSelector((state: RootState) => state.choiceSlice)
   const timeSlice = useSelector((state: RootState) => state.timeSlice)
+  const momentSlice = useSelector((state: RootState) => state.momentSlice)
+  const current = moment.unix(momentSlice.timeData ?? 0)
   // console.log('TCL: choiceScreen:React.FC -> choiceSlice', choiceSlice)
 
   useEffect(() => {
@@ -121,10 +124,19 @@ const ChoiceScreen: React.FC = () => {
                       <Text>
                         {LIST_DATA3?.[mutiSlice.index]?.id !== -1 ? (
                           <Text>
-                            {LIST_DATA3?.[mutiSlice?.index]?.time} giờ
+                            {LIST_DATA3?.[mutiSlice?.index]?.time} giờ,
+                            <Text> </Text>
+                            <Text>
+                              bắt đâu từ <Text> </Text>
+                              {current
+                                .hour?.()
+                                .toString()
+                                .padStart(2, '0')} :{' '}
+                            </Text>
+                            <Text>{current.minutes?.()}</Text>
                           </Text>
                         ) : null}
-                        , bắt đầu từ 14:00
+                        {<View style={{ flexDirection: 'row' }}></View>}
                       </Text>
                     </View>
                   </View>
@@ -239,7 +251,7 @@ const ChoiceScreen: React.FC = () => {
         <View style={styles.headerFooterStyle}>
           <View style={styles.textStyle}>
             <TouchableOpacity
-            testID="btnPayment"
+              testID="btnPayment"
               onPress={() => {
                 // navigation.reset({
                 //   index: 0,

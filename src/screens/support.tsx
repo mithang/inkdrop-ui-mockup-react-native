@@ -13,7 +13,6 @@ import { RootState } from '../redux/store'
 import moment from 'moment'
 import PickerTime from '@/components/pickerTime/pickerTime'
 import { addMoment } from '@/redux/moment'
-import SelectorTime from '@/components/selectorTime/SelectorTime'
 
 const SupportScreen = () => {
   const openUrl = () => {
@@ -35,7 +34,7 @@ const SupportScreen = () => {
     <View style={styles.container}>
       <Header nameHeader="Hỗ trợ" />
       <View style={styles.body}>
-        {/* <PickerTime date={date} onChange={onChange} /> */}
+        <PickerTime date={date} onChange={onChange} />
         {/* <Text>{current.hour?.() + 2}</Text>
         <Text>{current.minutes?.()}</Text> */}
         <Text style={styles.text}>Bạn cần hỗ trợ? Hãy liên hệ</Text>

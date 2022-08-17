@@ -14,8 +14,11 @@ interface IPickerTime {
 const PickerTime: React.FC<IPickerTime> = ({ date, onChange }) => {
   useEffect(() => {}, [date])
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View>
       <RNDateTimePicker
+        style={{
+          width: 100
+        }}
         testID="dateTimePicker"
         value={date.toDate()}
         timeZoneOffsetInMinutes={7 * 60}
@@ -24,8 +27,9 @@ const PickerTime: React.FC<IPickerTime> = ({ date, onChange }) => {
         display="default"
         locale="es-ES"
         onChange={onChange}
+        themeVariant="light"
       />
-    </SafeAreaView>
+    </View>
   )
 }
 
